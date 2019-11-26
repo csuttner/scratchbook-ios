@@ -1,0 +1,95 @@
+import random
+
+def main():
+	my_bst = BinarySearchTree()
+	my_range = range(0,100)
+	my_nums = random.sample(my_range,10)
+
+	for i in my_nums:
+		my_bst.tree_add(i)
+
+	my_bst.tree_add(0)
+	my_bst.tree_add(50)
+	my_bst.tree_add(100)
+
+	my_bst.tree_print()
+
+	print my_bst.tree_find(0)
+	print my_bst.tree_find(50)
+	print my_bst.tree_find(100)
+	print my_bst.tree_find(-10)
+	print my_bst.tree_find(101)
+
+
+class TreeNode(object):
+	def __init__(self, value):
+		self.data = value
+		self.left = None
+		self.right = None
+
+class BinarySearchTree(object):
+	top = None
+	
+	def tree_clear(self):
+		self.top = None
+
+	def tree_add(val):
+		if self.top == None:
+			self.top = TreeNode(value)
+			return
+		else:
+			cur = self.top
+			while True:
+				if value == cur.data:
+					return
+				elif value < cur.data:
+					if cur.left == None:
+						cur.left = TreeNode(value)
+						return
+					cur = cur.left
+				else:
+					if cur.right == None:
+						cur.right = TreeNode(value)
+						return
+					cur = cur.right
+
+	def tree_print(self):
+		if self.top == None:
+			return
+		else:
+			self._tree_print_r(self.top)
+
+	def _tree_print_r(self, node):
+		if node.left != None:
+			self._tree_print_r(node.left)
+		print node.data
+		if node.right != None:
+			self._tree_print_r(node.right)
+
+	def tree_find(self, target):
+		if self.top == None:
+			return False
+		else:
+			cur = self.top
+			while True:
+				if cur.data == target:
+					return True
+				elif target < cur.data:
+					if cur.left == None:
+						return False
+					else:
+						cur = cur.left
+				else:
+					if cur.right == None:
+						return False
+					else:
+						cur = cur.right
+
+if __name__ == "__main__":
+	main()
+
+			
+
+
+
+

@@ -1,0 +1,19 @@
+a = 'thisisastringofonlycharacters'
+b = 'aeiou'
+def inSet(setToCheck, isThisInIt):
+	inItSet = set(isThisInIt)
+	return sum(i in inItSet for i in setToCheck)
+
+print inSet(a,b)
+
+class Solution(object):
+	def removeR(self, sentence, vowels):
+	    while len(vowels) != 0:
+	        sentence = sentence.replace(vowels.pop(),'')
+	        return self.removeR(sentence, vowels)
+	    return sentence
+	def removeVowels(self,S):
+	    V = set('aeiou')
+	    return self.removeR(S,V)
+
+print Solution().removeVowels(a)

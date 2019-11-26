@@ -1,0 +1,56 @@
+name = "Joel"
+job = "Dev"
+#________________
+print "{} the {}".format(name, job)
+#___________________________________________________
+#(hit run)
+
+x = 10
+print x == 10
+print x != 10
+print x > 5
+print x < 15
+
+#_____________
+#(hit run)
+
+a = [1,2,3]
+b = [1,2,3]
+c = a
+print a == b
+print a is b
+print a is c
+#___________
+#(hit run)
+
+i = 0
+while i < 5:
+    print i
+    i = i + 1
+#____________
+#(hit run)
+
+days = ['M', 'T', 'W', 'R', 'F']
+for day in days:
+    print day
+#_________________________________________
+#(hit run)
+
+for i in range(0, 10, 2):
+    print i
+#________________________
+#(hit run)
+
+#2 PARTER::
+
+d = {}
+d["1_key"] = 10
+d["2_key"] = 21
+d["3_key"] = 32
+#_________________
+#(hit run)
+
+for key, val in d.items():
+    print key, val
+#___________________________
+#(hit run)

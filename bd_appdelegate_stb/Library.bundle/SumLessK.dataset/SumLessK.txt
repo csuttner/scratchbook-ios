@@ -1,0 +1,67 @@
+# Two sum less than K
+
+# A = [803,468,292,154,924,424,197,277,753,86,984,144,105,450,287,265,655,404,407,794,513,976,241,272,84,503,65,654,805,413,362,907,297,473,113,567,646,607,806,674,424,753,870,574,765,170,603,696,513,58]
+# K = 300
+
+
+
+A = [10,20,30]
+K = 15
+
+class Solution(object):
+
+    def two_sum(self, A, K):
+
+        length = len(A)
+
+        if length <= 1:
+            return -1
+
+        if length == 2:
+            return A[0] + A[1]
+
+        A.sort()
+
+        if A[0] + A[1] >= K:
+            return -1
+
+        if A[length - 2] + A[length - 1] < K:
+            return A[length - 2] + A[length - 1]
+
+        inx_left = 0
+        inx_right = 1
+
+        # zigzag down diagonal
+
+        while inx_right + 1 < length and A[inx_right + 1] + A[inx_left +1] < K:
+            inx_left += 1
+            inx_right += 1
+
+        if inx_right + 1 == length:
+            return -1
+
+        # arrive at diagonal point before point >= K
+        # check this point isnt the obvious K - 1 answer
+
+        
+        largest = None
+
+        while True:
+        	
+        	if inx_left == 0 or inx_right == length - 1:
+        		break
+        	
+        	if A[inx_left] + A[inx_right + 1] < K:
+        		inx_right += 1
+        	else:
+        		inx_left -= 1
+
+        	if A[inx_left] + A[inx_right] == K - 1:
+        		return K - 1
+
+
+
+        return largest
+
+
+print Solution().two_sum(A, K)
